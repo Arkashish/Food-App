@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FaRegUser } from "react-icons/fa";
-// import Modal from "./Modal";
-// import { AuthContext } from "../contexts/AuthProvider";
-// import Profile from "./Profile";
+import Modal from "./Modal";
+import { AuthContext } from "../contexts/AuthProvider";
+import Profile from "./Profile";
 import { Link } from "react-router-dom";
 const Navbar = () => {
   const [isSticky, setSticky] = useState(false);
 
-//   const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   // console.log(user);
 
   // Handling the scroll
@@ -71,11 +71,10 @@ const Navbar = () => {
   return (
     <header className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-400 ease-in-out">
       <div
-        className={`navbar xl:px-24  ${
-          isSticky
+        className={`navbar xl:px-24  ${isSticky
             ? "shadow-md bg-base-100 transition-all duration-400 ease-in-out"
             : ""
-        }`}
+          }`}
       >
         <div className="navbar-start">
           <div className="dropdown">
@@ -171,7 +170,7 @@ const Navbar = () => {
           </Link>
 
           {/* login btn */}
-          {/* {user ? (
+          {user ? (
             <>
               <Profile user={user} />
             </>
@@ -182,7 +181,7 @@ const Navbar = () => {
             >
               <FaRegUser /> Login
             </button>
-          )} */}
+          )}
 
           {/* <button
             onClick={() => document.getElementById("my_modal_5").showModal()}
@@ -191,7 +190,7 @@ const Navbar = () => {
             <FaRegUser /> Login
           </button> */}
 
-          {/* <Modal /> */}
+          <Modal />
         </div>
       </div>
     </header>
@@ -199,3 +198,57 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// import React, { useState, useEffect, useContext } from "react";
+// import { FaRegUser } from "react-icons/fa";
+// import Modal from "./Modal";
+// import { AuthContext } from "../contexts/AuthProvider";
+// import Profile from "./Profile";
+// import { Link } from "react-router-dom";
+
+// const Navbar = () => {
+//   const [isSticky, setSticky] = useState(false);
+//   const { user } = useContext(AuthContext) || {};  // Fallback to empty object if undefined
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const offSet = window.scrollY;
+//       if (offSet > 0) {
+//         setSticky(true);
+//       } else {
+//         setSticky(false);
+//       }
+//     };
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);  // Correct cleanup
+//   }, []);
+
+//   const navItems = (
+//     <>
+//       <li>
+//         <a href="/">Home</a>
+//       </li>
+//       {/* Your other nav items */}
+//     </>
+//   );
+
+//   return (
+//     <header className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-400 ease-in-out">
+//       <div className={`navbar xl:px-24  ${isSticky ? "shadow-md bg-base-100 transition-all duration-400 ease-in-out" : ""}`}>
+//         {/* Other navbar content */}
+//         <div className="navbar-end">
+//           {user ? (
+//             <Profile user={user} />
+//           ) : (
+//             <button onClick={() => document.getElementById("my_modal_5").showModal()} className="btn bg-blue rounded-full px-6 text-white flex items-center gap-2">
+//               <FaRegUser /> Login
+//             </button>
+//           )}
+//           <Modal />
+//         </div>
+//       </div>
+//     </header>
+//   );
+// };
+
+// export default Navbar;

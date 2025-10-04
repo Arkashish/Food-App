@@ -138,7 +138,7 @@ const Menu = () => {
                             onClick={() => filterItem("drinks")}
                             className={selectedCategory === "drinks" ? "active" : ""}
                         >
-                            Cool Drinks
+                            Cold Drinks
                         </button>
                     </div>
 
